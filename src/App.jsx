@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Header from "./components/Header";
 import GeneralForm from "./components/GeneralForm";
 import EducationForm from "./components/EducationForm";
+import UserEducation from "./components/UserEducation";
 
 function App() {
   const generalFormLayout = [
@@ -23,6 +25,7 @@ function App() {
       label: "Education Level",
       name: "educationLevel",
       options: [
+        "null",
         "High School Diploma",
         "Associate",
         "Bachelor's",
@@ -48,6 +51,8 @@ function App() {
     },
   ];
 
+  const [currentSection, setCurrentSection] = useState("General Information");
+
   const [generalData, setGeneralData] = useState({
     firstName: "1",
     lastName: "2",
@@ -64,6 +69,12 @@ function App() {
   });
 
   const [educationList, setEducationList] = useState([]);
+
+  function handleSectionChange(e) {
+    console.log("Changing Section");
+    let newSection = e.target.getAttribute("data-section");
+    setCurrentSection(newSection);
+  }
 
   function handleGeneralUpdate(e) {
     const value = e.target.value;
@@ -83,26 +94,32 @@ function App() {
 
   function handleEducationSave(e) {
     e.preventDefault();
-    console.log("Triggered");
     const newEntry = educationData;
     setEducationList([...educationList, newEntry]);
   }
 
   return (
     <>
-      <GeneralForm
-        layout={generalFormLayout}
-        formData={generalData}
-        onChange={handleGeneralUpdate}
-      />
+      <Header onChange={handleSectionChange} currentSection={currentSection} />
+      {currentSection === "General Information" && (
+        <GeneralForm
+          layout={generalFormLayout}
+          formData={generalData}
+          onChange={handleGeneralUpdate}
+        />
+      )}
       <br />
-      <EducationForm
-        layout={educationFormLayout}
-        formData={educationData}
-        formList={educationList}
-        onChange={handleEducationUpdate}
-        onSave={handleEducationSave}
-      />
+      {currentSection === "Education" && (
+        <>
+          <EducationForm
+            layout={educationFormLayout}
+            formData={educationData}
+            onChange={handleEducationUpdate}
+            onSave={handleEducationSave}
+          />
+          <UserEducation dataList={educationList} />
+        </>
+      )}
     </>
   );
 }

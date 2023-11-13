@@ -17,12 +17,6 @@ function GeneralForm({ layout, formData, onChange }) {
           );
         })}
       </form>
-      {/* visual reference of state data on user input - remove later */}
-      <h1>Current State Data for General Form:</h1>
-      <p>{formData.firstName}</p>
-      <p>{formData.lastName}</p>
-      <p>{formData.emailAddress}</p>
-      <p>{formData.phoneNumber}</p>
     </div>
   );
 }
