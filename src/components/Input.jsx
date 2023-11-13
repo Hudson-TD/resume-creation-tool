@@ -1,11 +1,11 @@
-import styles from "../styling/Input.module.css";
+import formStyling from "../styling/Form.module.css";
 
 function Input({ formContent, formData, onChange }) {
   return (
     <>
-      <label className={styles["form-label"]}>{formContent.label}</label>
+      <label className={formStyling["form-label"]}>{formContent.label}</label>
       <input
-        className={styles["form-input"]}
+        className={formStyling["form-input"]}
         name={formContent.name}
         type={formContent.type}
         value={formData}
