@@ -14,3 +14,8 @@
 .form-select {
   color: green;
 }
+
+.captured-data-container {
+  display: flex;
+  gap: 10px;
+}
