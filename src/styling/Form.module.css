@@ -1,0 +1,16 @@
+.form-el {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  color: blueviolet;
+}
+
+.form-input {
+  color: brown;
+}
+
+.form-select {
+  color: green;
+}
