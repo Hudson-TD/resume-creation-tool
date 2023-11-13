@@ -1,10 +1,11 @@
+import formStyling from "../styling/Form.module.css";
 import Input from "./Input";
 
 function GeneralForm({ layout, formData, onChange }) {
   return (
-    <div className="form-container">
+    <div className={formStyling["form-container"]}>
       <h1>General Information</h1>
-      <form className="form-el">
+      <form className={formStyling["form-el"]}>
         {layout.map((formEl) => {
           return (
             <Input
