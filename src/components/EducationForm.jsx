@@ -2,7 +2,9 @@ import formStyling from "../styling/Form.module.css";
 import Input from "./Input";
 import Select from "./Select";
 
-function EducationForm({ layout, formData, onChange, onSave }) {
+function EducationForm({ layout, formData, dataList, onChange, onSave }) {
+  const maxEntries = 3;
+
   return (
     <div className={formStyling["form-container"]}>
       <h1>Education Information</h1>
@@ -29,7 +31,12 @@ function EducationForm({ layout, formData, onChange, onSave }) {
           }
         })}
 
-        <button onClick={onSave}>Save Entry</button>
+        <button
+          disabled={dataList.length === maxEntries ? true : false}
+          onClick={onSave}
+        >
+          Save Entry
+        </button>
       </form>
     </div>
   );
