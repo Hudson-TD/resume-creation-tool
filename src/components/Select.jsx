@@ -1,18 +1,17 @@
-import formStyling from "../styling/Form.module.css";
-
 function Select({ formContent, onChange }) {
   return (
-    <>
-      <label className={formStyling["form-label"]}>{formContent.label}</label>
+    <div className={"form-control"}>
+      <label className={"form-label"}>{formContent.label}</label>
       <select
-        className={formStyling["form-select"]}
+        className={"form-select"}
         name={formContent.name}
         onChange={onChange}
+        defaultValue={formContent.options[0]}
       >
         {formContent.options.map((option) => {
           if (option === "null") {
             return (
-              <option key={option} disabled selected value={option}>
+              <option key={option} disabled value={option}>
                 -- select an option --
               </option>
             );
@@ -24,7 +23,7 @@ function Select({ formContent, onChange }) {
           );
         })}
       </select>
-    </>
+    </div>
   );
 }
 
