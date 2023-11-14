@@ -6,11 +6,17 @@ function Header({ onChange, currentSection }) {
     "Review & Download",
   ];
   return (
-    <div className="mw-100 p-4">
-      <div className="d-flex justify-content-between align-items-center">
-        <h1>CV Easy</h1>
+    <div className="w-100 p-3 bg-dark rounded-bottom">
+      <div className="d-flex justify-content-around align-items-center">
+        <div className="d-flex justify-content-center align-items-center">
+          <img
+            src="public/maid-logo.svg"
+            style={{ width: "100px", height: "100px" }}
+          />
+          <h1 className="mx-4 text-white">Resu-Maid</h1>
+        </div>
         <div>
-          <div className="d-flex m-0 mx-5">
+          <div className="d-flex">
             {sections.map((section, index) => {
               return (
                 <button
@@ -18,8 +24,8 @@ function Header({ onChange, currentSection }) {
                   data-section={section}
                   className={
                     currentSection === section
-                      ? "list-unstyled px-3 text-primary"
-                      : "list-unstyled px-3 text-secondary"
+                      ? "btn btn-primary mx-1"
+                      : "btn btn-light mx-1"
                   }
                   onClick={onChange}
                 >
