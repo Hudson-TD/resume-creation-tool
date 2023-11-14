@@ -6,23 +6,56 @@ import UserEducation from "./components/UserEducation";
 
 function App() {
   const generalFormLayout = [
-    { label: "First Name", name: "firstName", type: "text", id: 0 },
-    { label: "Last Name", name: "lastName", type: "text", id: 1 },
-    { label: "Email Address", name: "emailAddress", id: 2 },
-    { label: "Phone Number", name: "phoneNumber", type: "tel", id: 3 },
+    {
+      label: "First Name *",
+      name: "firstName",
+      type: "text",
+      id: 0,
+    },
+    {
+      label: "Last Name *",
+      name: "lastName",
+      type: "text",
+      id: 1,
+    },
+    { label: "Email Address *", name: "emailAddress", id: 2 },
+    {
+      label: "Phone Number *",
+      name: "phoneNumber",
+      type: "tel",
+      id: 3,
+    },
+    {
+      label: "Social Media Link 1 (optional)",
+      name: "smOne",
+      type: "url",
+      id: 4,
+    },
+    {
+      label: "Social Media Link 2 (optional)",
+      name: "smTwo",
+      type: "url",
+      id: 5,
+    },
+    {
+      label: "Social Media Link 3 (optional)",
+      name: "smThree",
+      type: "url",
+      id: 6,
+    },
   ];
 
   const educationFormLayout = [
     {
       fieldTag: "Input",
-      label: "Institute Name",
+      label: "Institute Name *",
       name: "institute",
       type: "text",
       id: 0,
     },
     {
       fieldTag: "Select",
-      label: "Education Level",
+      label: "Education Level *",
       name: "educationLevel",
       options: [
         "null",
@@ -34,30 +67,54 @@ function App() {
       ],
       id: 1,
     },
-    { fieldTag: "Input", label: "Major", name: "major", id: 2 },
+    { fieldTag: "Input", label: "Major *", name: "major", id: 2 },
     {
       fieldTag: "Input",
-      label: "Start Date",
+      label: "Start Date *",
       name: "startDate",
       type: "date",
       id: 3,
     },
     {
       fieldTag: "Input",
-      label: "Graduation Date",
+      label: "Graduation Date *",
       name: "graduationDate",
       type: "date",
       id: 4,
+    },
+    {
+      fieldTag: "Input",
+      label: "Accolade 1 (optional)",
+      name: "accoladeOne",
+      type: "text",
+      id: 5,
+    },
+    {
+      fieldTag: "Input",
+      label: "Accolade 2 (optional)",
+      name: "accoladeTwo",
+      type: "text",
+      id: 6,
+    },
+    {
+      fieldTag: "Input",
+      label: "Accolade 3 (optional)",
+      name: "accoladeThree",
+      type: "text",
+      id: 7,
     },
   ];
 
   const [currentSection, setCurrentSection] = useState("General Information");
 
   const [generalData, setGeneralData] = useState({
-    firstName: "1",
-    lastName: "2",
-    emailAddress: "3",
-    phoneNumber: "4",
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    phoneNumber: "",
+    smOne: "",
+    smTwo: "",
+    smThree: "",
   });
 
   const [educationData, setEducationData] = useState({
@@ -66,14 +123,21 @@ function App() {
     major: "",
     startDate: "",
     graduationDate: "",
+    accoladeOne: "",
+    accoladeTwo: "",
+    accoladeThree: "",
   });
 
   const [educationList, setEducationList] = useState([]);
 
   function handleSectionChange(e) {
-    console.log("Changing Section");
     let newSection = e.target.getAttribute("data-section");
     setCurrentSection(newSection);
+  }
+
+  function handleSectionSave(e) {
+    let nextSection = e.target.getAttribute("data-next");
+    setCurrentSection(nextSection);
   }
 
   function handleGeneralUpdate(e) {
@@ -100,25 +164,34 @@ function App() {
 
   return (
     <>
-      <Header onChange={handleSectionChange} currentSection={currentSection} />
+      <Header
+        onChange={handleSectionChange}
+        currentSection={currentSection}
+        className={"w-75"}
+      />
       {currentSection === "General Information" && (
         <GeneralForm
           layout={generalFormLayout}
           formData={generalData}
           onChange={handleGeneralUpdate}
+          onSectionSave={handleSectionSave}
         />
       )}
       <br />
       {currentSection === "Education" && (
-        <>
+        <div className={"d-flex"}>
           <EducationForm
             layout={educationFormLayout}
             formData={educationData}
             onChange={handleEducationUpdate}
             onSave={handleEducationSave}
+            dataList={educationList}
           />
-          <UserEducation dataList={educationList} />
-        </>
+          <UserEducation
+            dataList={educationList}
+            onSectionSave={handleSectionSave}
+          />
+        </div>
       )}
     </>
   );
