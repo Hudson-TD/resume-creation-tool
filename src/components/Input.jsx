@@ -22,6 +22,7 @@ function Input({ formContent, formData, onChange }) {
         <input
           className="form-control"
           name={formContent.name}
+          id={formContent.name}
           type={formContent.type}
           value={formData}
           onChange={onChange}
@@ -35,6 +36,7 @@ function Input({ formContent, formData, onChange }) {
         <input
           className="form-control"
           name={formContent.name}
+          id={formContent.name}
           type={formContent.type}
           value={formData}
           onChange={onChange}

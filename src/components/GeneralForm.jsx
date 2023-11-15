@@ -22,7 +22,7 @@ function GeneralForm({ layout, formData, onChange, onSectionSave }) {
         </span>
       </h1>
       <div className={"w-50"}>
-        <form className={"form-control"}>
+        <form className={"form-control"} id="generalForm">
           {layout.map((formEl) => {
             return (
               <Input
@@ -30,6 +30,7 @@ function GeneralForm({ layout, formData, onChange, onSectionSave }) {
                 key={formEl.id}
                 onChange={onChange}
                 formData={formData[formEl.name]}
+                id={formEl.name}
               />
             );
           })}

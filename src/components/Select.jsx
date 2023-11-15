@@ -5,6 +5,7 @@ function Select({ formContent, onChange }) {
       <select
         className={"form-select"}
         name={formContent.name}
+        id={formContent.name}
         onChange={onChange}
         defaultValue={formContent.options[0]}
       >

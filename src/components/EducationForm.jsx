@@ -19,6 +19,7 @@ function EducationForm({ layout, formData, dataList, onChange, onSave }) {
                 <Input
                   formContent={formEl}
                   key={formEl.id}
+                  id={formEl.name}
                   onChange={onChange}
                   formData={formData[layout.name]}
                 />
@@ -28,6 +29,7 @@ function EducationForm({ layout, formData, dataList, onChange, onSave }) {
                 <Select
                   formContent={formEl}
                   key={formEl.id}
+                  id={formEl.name}
                   formData={formData[layout.name]}
                   onChange={onChange}
                 />
