@@ -10,7 +10,7 @@ function Header({ onChange, currentSection }) {
       <div className="d-flex justify-content-around align-items-center">
         <div className="d-flex justify-content-center align-items-center">
           <img
-            src="public/maid-logo.svg"
+            src="/maid-logo.svg"
             style={{ width: "100px", height: "100px" }}
           />
           <h1 className="mx-4 text-white">Resu-Maid</h1>
