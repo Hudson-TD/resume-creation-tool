@@ -117,16 +117,16 @@ function App() {
     smThree: "",
   });
 
-  const [educationData, setEducationData] = useState({
-    institute: "",
-    educationLevel: "",
-    major: "",
-    startDate: "",
-    graduationDate: "",
-    accoladeOne: "",
-    accoladeTwo: "",
-    accoladeThree: "",
-  });
+  // const [educationData, setEducationData] = useState({
+  //   institute: "",
+  //   educationLevel: "",
+  //   major: "",
+  //   startDate: "",
+  //   graduationDate: "",
+  //   accoladeOne: "",
+  //   accoladeTwo: "",
+  //   accoladeThree: "",
+  // });
 
   const [educationList, setEducationList] = useState([]);
 
@@ -148,17 +148,16 @@ function App() {
     });
   }
 
-  function handleEducationUpdate(e) {
-    const value = e.target.value;
-    setEducationData({
-      ...educationData,
-      [e.target.name]: value,
-    });
-  }
+  // function handleEducationUpdate(e) {
+  //   const value = e.target.value;
+  //   setEducationData({
+  //     ...educationData,
+  //     [e.target.name]: value,
+  //   });
+  // }
 
-  function handleEducationSave(e) {
-    e.preventDefault();
-    const newEntry = educationData;
+  function handleEducationSave(formikObj) {
+    const newEntry = formikObj;
     setEducationList([...educationList, newEntry]);
   }
 
@@ -181,9 +180,6 @@ function App() {
       {currentSection === "Education" && (
         <div className={"d-flex"}>
           <EducationForm
-            layout={educationFormLayout}
-            formData={educationData}
-            onChange={handleEducationUpdate}
             onSave={handleEducationSave}
             dataList={educationList}
           />
