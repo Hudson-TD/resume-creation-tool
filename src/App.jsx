@@ -47,15 +47,7 @@ function App() {
 
   const [currentSection, setCurrentSection] = useState("General Information");
 
-  const [generalData, setGeneralData] = useState({
-    firstName: "",
-    lastName: "",
-    emailAddress: "",
-    phoneNumber: "",
-    smOne: "",
-    smTwo: "",
-    smThree: "",
-  });
+  const [generalData, setGeneralData] = useState({});
 
   const [educationList, setEducationList] = useState([]);
 
@@ -69,17 +61,14 @@ function App() {
     setCurrentSection(nextSection);
   }
 
-  function handleGeneralUpdate(e) {
-    const value = e.target.value;
-    setGeneralData({
-      ...generalData,
-      [e.target.name]: value,
-    });
+  function handleGeneralSave(formikObj) {
+    const newGeneralEntry = formikObj;
+    setGeneralData({ newGeneralEntry });
   }
 
   function handleEducationSave(formikObj) {
-    const newEntry = formikObj;
-    setEducationList([...educationList, newEntry]);
+    const newEducationEntry = formikObj;
+    setEducationList([...educationList, newEducationEntry]);
   }
 
   return (
@@ -91,9 +80,8 @@ function App() {
       />
       {currentSection === "General Information" && (
         <GeneralForm
-          layout={generalFormLayout}
           formData={generalData}
-          onChange={handleGeneralUpdate}
+          onSave={handleGeneralSave}
           onSectionSave={handleSectionSave}
         />
       )}

@@ -1,4 +1,11 @@
 function EducationCard({ data }) {
+  console.log(data);
+  const startString = data.startDate;
+  const startSplit = startString.split("-");
+
+  const gradString = data.graduationDate;
+  const gradSplit = gradString.split("-");
+
   return (
     <div className="card w-75 mb-1 d-flex flex-row">
       <div className="card-body">
@@ -7,12 +14,12 @@ function EducationCard({ data }) {
           {data.educationLevel} of {data.major}
         </p>
         <p className="card-text">
-          {data.startDate} - {data.graduationDate}
+          {startSplit[1]}/{startSplit[0]} - {gradSplit[1]}/{gradSplit[0]}
         </p>
         <ul className="list-unstyled">
-          <li className="card-text">- {data.accoladeOne}</li>
-          <li className="card-text">- {data.accoladeTwo}</li>
-          <li className="card-text">- {data.accoladeThree}</li>
+          <li className="card-text">{data.accoladeOne}</li>
+          <li className="card-text">{data.accoladeTwo}</li>
+          <li className="card-text">{data.accoladeThree}</li>
         </ul>
       </div>
       <div>
