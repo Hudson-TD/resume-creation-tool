@@ -45,66 +45,6 @@ function App() {
     },
   ];
 
-  const educationFormLayout = [
-    {
-      fieldTag: "Input",
-      label: "Institute Name *",
-      name: "institute",
-      type: "text",
-      id: 0,
-    },
-    {
-      fieldTag: "Select",
-      label: "Education Level *",
-      name: "educationLevel",
-      options: [
-        "null",
-        "High School Diploma",
-        "Associate",
-        "Bachelor's",
-        "Master's",
-        "Doctorate",
-      ],
-      id: 1,
-    },
-    { fieldTag: "Input", label: "Major *", name: "major", id: 2 },
-    {
-      fieldTag: "Input",
-      label: "Start Date *",
-      name: "startDate",
-      type: "date",
-      id: 3,
-    },
-    {
-      fieldTag: "Input",
-      label: "Graduation Date *",
-      name: "graduationDate",
-      type: "date",
-      id: 4,
-    },
-    {
-      fieldTag: "Input",
-      label: "Accolade 1 (optional)",
-      name: "accoladeOne",
-      type: "text",
-      id: 5,
-    },
-    {
-      fieldTag: "Input",
-      label: "Accolade 2 (optional)",
-      name: "accoladeTwo",
-      type: "text",
-      id: 6,
-    },
-    {
-      fieldTag: "Input",
-      label: "Accolade 3 (optional)",
-      name: "accoladeThree",
-      type: "text",
-      id: 7,
-    },
-  ];
-
   const [currentSection, setCurrentSection] = useState("General Information");
 
   const [generalData, setGeneralData] = useState({
@@ -116,17 +56,6 @@ function App() {
     smTwo: "",
     smThree: "",
   });
-
-  // const [educationData, setEducationData] = useState({
-  //   institute: "",
-  //   educationLevel: "",
-  //   major: "",
-  //   startDate: "",
-  //   graduationDate: "",
-  //   accoladeOne: "",
-  //   accoladeTwo: "",
-  //   accoladeThree: "",
-  // });
 
   const [educationList, setEducationList] = useState([]);
 
@@ -147,14 +76,6 @@ function App() {
       [e.target.name]: value,
     });
   }
-
-  // function handleEducationUpdate(e) {
-  //   const value = e.target.value;
-  //   setEducationData({
-  //     ...educationData,
-  //     [e.target.name]: value,
-  //   });
-  // }
 
   function handleEducationSave(formikObj) {
     const newEntry = formikObj;
