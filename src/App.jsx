@@ -3,48 +3,9 @@ import Header from "./components/Header";
 import GeneralForm from "./components/GeneralForm";
 import EducationForm from "./components/EducationForm";
 import UserEducation from "./components/UserEducation";
+import Review from "./components/Review";
 
 function App() {
-  const generalFormLayout = [
-    {
-      label: "First Name *",
-      name: "firstName",
-      type: "text",
-      id: 0,
-    },
-    {
-      label: "Last Name *",
-      name: "lastName",
-      type: "text",
-      id: 1,
-    },
-    { label: "Email Address *", name: "emailAddress", id: 2 },
-    {
-      label: "Phone Number *",
-      name: "phoneNumber",
-      type: "tel",
-      id: 3,
-    },
-    {
-      label: "Social Media Link 1 (optional)",
-      name: "smOne",
-      type: "url",
-      id: 4,
-    },
-    {
-      label: "Social Media Link 2 (optional)",
-      name: "smTwo",
-      type: "url",
-      id: 5,
-    },
-    {
-      label: "Social Media Link 3 (optional)",
-      name: "smThree",
-      type: "url",
-      id: 6,
-    },
-  ];
-
   const [currentSection, setCurrentSection] = useState("General Information");
 
   const [generalData, setGeneralData] = useState({});
@@ -56,14 +17,13 @@ function App() {
     setCurrentSection(newSection);
   }
 
-  function handleSectionSave(e) {
-    let nextSection = e.target.getAttribute("data-next");
+  function handleSectionSave(nextSection) {
     setCurrentSection(nextSection);
   }
 
   function handleGeneralSave(formikObj) {
-    const newGeneralEntry = formikObj;
-    setGeneralData({ newGeneralEntry });
+    const newGeneralEntry = { ...formikObj };
+    setGeneralData({ ...newGeneralEntry });
   }
 
   function handleEducationSave(formikObj) {
@@ -81,7 +41,7 @@ function App() {
       {currentSection === "General Information" && (
         <GeneralForm
           formData={generalData}
-          onSave={handleGeneralSave}
+          onGeneralSave={handleGeneralSave}
           onSectionSave={handleSectionSave}
         />
       )}
@@ -97,6 +57,9 @@ function App() {
             onSectionSave={handleSectionSave}
           />
         </div>
+      )}
+      {currentSection === "Review & Download" && (
+        <Review generalData={generalData} />
       )}
     </>
   );
