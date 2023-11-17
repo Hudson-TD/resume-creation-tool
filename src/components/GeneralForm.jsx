@@ -19,9 +19,10 @@ const GeneralForm = ({ onGeneralSave, onSectionSave }) => {
       firstName: Yup.string().required("Required"),
       lastName: Yup.string().required("Required"),
       emailAddress: Yup.string().email().required("Required"),
-      phoneNumber: Yup.string()
-        .required("Required")
-        .matches(phoneRegExp, "Phone number is not valid"),
+      phoneNumber: Yup.string().matches(
+        phoneRegExp,
+        "Phone number is not valid"
+      ),
       smOne: Yup.string(),
       smTwo: Yup.string(),
       smThree: Yup.string(),
@@ -38,7 +39,7 @@ const GeneralForm = ({ onGeneralSave, onSectionSave }) => {
         "w-100 d-flex flex-column justify-content-start align-items-center"
       }
     >
-      <h1 className={"py-3"}>General Information</h1>
+      <h1 className="font-weight-bold py-3">General Information</h1>
       <div className={"w-75"}>
         <form onSubmit={formik.handleSubmit}>
           <div className="form-control d-flex flex-column">
@@ -84,7 +85,7 @@ const GeneralForm = ({ onGeneralSave, onSectionSave }) => {
             ) : null}
           </div>
           <div className="form-control d-flex flex-column">
-            <label htmlFor="phoneNumber">Phone Number *</label>
+            <label htmlFor="phoneNumber">Phone Number (Recommended)</label>
             <input
               id="phoneNumber"
               name="phoneNumber"
@@ -97,8 +98,14 @@ const GeneralForm = ({ onGeneralSave, onSectionSave }) => {
               <span className="text-danger">{formik.errors.phoneNumber}</span>
             ) : null}
           </div>
+          <div className="text-center py-2 text-primary">
+            <p className="fs-5">
+              <span className="fs-2">🔑 </span>Stand out with social media
+              (LinkedIn, Web Portfolio, etc.)
+            </p>
+          </div>
           <div className="form-control d-flex flex-column">
-            <label htmlFor="smOne">Social Media Link (optional)</label>
+            <label htmlFor="smOne">Link One (Optional)</label>
             <input
               id="smOne"
               name="smOne"
@@ -112,7 +119,7 @@ const GeneralForm = ({ onGeneralSave, onSectionSave }) => {
             ) : null}
           </div>
           <div className="form-control d-flex flex-column">
-            <label htmlFor="smTwo">Social Media Link (optional)</label>
+            <label htmlFor="smTwo">Link Two (Optional)</label>
             <input
               id="smTwo"
               name="smTwo"
@@ -126,7 +133,7 @@ const GeneralForm = ({ onGeneralSave, onSectionSave }) => {
             ) : null}
           </div>
           <div className="form-control d-flex flex-column">
-            <label htmlFor="smThree">Social Media Link (optional)</label>
+            <label htmlFor="smThree">Link Three (Optional)</label>
             <input
               id="smThree"
               name="smThree"

@@ -1,10 +1,10 @@
-function EducationCard({ data }) {
+function EducationCard({ data, handleEntryDelete }) {
   console.log(data);
   const startString = data.startDate;
-  const startSplit = startString.split("-");
+  // const startSplit = startString.split("-");
 
   const gradString = data.graduationDate;
-  const gradSplit = gradString.split("-");
+  // const gradSplit = gradString.split("-");
 
   return (
     <div className="card w-75 mb-1 d-flex flex-row">
@@ -13,9 +13,7 @@ function EducationCard({ data }) {
         <p className="card-text">
           {data.educationLevel} of {data.major}
         </p>
-        <p className="card-text">
-          {startSplit[1]}/{startSplit[0]} - {gradSplit[1]}/{gradSplit[0]}
-        </p>
+        <p className="card-text"></p>
         <ul className="list-unstyled">
           <li className="card-text">{data.accoladeOne}</li>
           <li className="card-text">{data.accoladeTwo}</li>
@@ -23,7 +21,12 @@ function EducationCard({ data }) {
         </ul>
       </div>
       <div>
-        <button href="#" className="btn btn-light h-100 w-15">
+        <button
+          type="button"
+          value={data.institute}
+          className="btn btn-light h-100 w-15"
+          onClick={handleEntryDelete}
+        >
           X
         </button>
       </div>

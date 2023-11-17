@@ -1,6 +1,6 @@
 import EducationCard from "./EducationCard";
 
-function UserEducation({ dataList, onSectionSave }) {
+function UserEducation({ dataList, onSectionSave, handleEntryDelete }) {
   return (
     <div
       className={
@@ -27,7 +27,13 @@ function UserEducation({ dataList, onSectionSave }) {
         }
       >
         {dataList.map((dataEntry, index) => {
-          return <EducationCard key={index} data={dataEntry} />;
+          return (
+            <EducationCard
+              key={index}
+              data={dataEntry}
+              handleEntryDelete={handleEntryDelete}
+            />
+          );
         })}
       </div>
       <div className="d-flex justify-content-center py-3">

@@ -77,6 +77,7 @@ const EducationForm = ({ dataList, onSave }) => {
               value={formik.values.educationLevel}
             >
               <option value="High School Diploma">High School Diploma</option>
+              <option value="Certification">Certification</option>
               <option value="Associate">Associate</option>
               <option value="Bachelor's">Bachelor&apos;s</option>
               <option value="Master's">Master&apos;s</option>
@@ -90,7 +91,7 @@ const EducationForm = ({ dataList, onSave }) => {
           </div>
           {showMajor === true && (
             <div className="form-control d-flex flex-column">
-              <label htmlFor="major">Major *</label>
+              <label htmlFor="major">Concentration / Major *</label>
               <input
                 id="major"
                 name="major"

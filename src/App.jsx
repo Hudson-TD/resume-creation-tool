@@ -31,37 +31,50 @@ function App() {
     setEducationList([...educationList, newEducationEntry]);
   }
 
+  function handleEntryDelete(e) {
+    let filterVal = e.target.value;
+    let newArray = educationList.filter((item) => {
+      return item.institute !== filterVal;
+    });
+
+    setEducationList([...newArray]);
+  }
+
   return (
-    <>
-      <Header
-        onChange={handleSectionChange}
-        currentSection={currentSection}
-        className={"w-75"}
-      />
-      {currentSection === "General Information" && (
-        <GeneralForm
-          formData={generalData}
-          onGeneralSave={handleGeneralSave}
-          onSectionSave={handleSectionSave}
+    <div className="d-flex vh-100 vw-100">
+      <div className="vh-100 w-20">
+        <Header
+          onChange={handleSectionChange}
+          currentSection={currentSection}
         />
-      )}
-      <br />
-      {currentSection === "Education" && (
-        <div className={"d-flex"}>
-          <EducationForm
-            onSave={handleEducationSave}
-            dataList={educationList}
-          />
-          <UserEducation
-            dataList={educationList}
+      </div>
+      <div className="w-75">
+        {currentSection === "General Information" && (
+          <GeneralForm
+            formData={generalData}
+            onGeneralSave={handleGeneralSave}
             onSectionSave={handleSectionSave}
           />
-        </div>
-      )}
-      {currentSection === "Review & Download" && (
-        <Review generalData={generalData} />
-      )}
-    </>
+        )}
+        <br />
+        {currentSection === "Education" && (
+          <div className={"d-flex"}>
+            <EducationForm
+              onSave={handleEducationSave}
+              dataList={educationList}
+            />
+            <UserEducation
+              dataList={educationList}
+              onSectionSave={handleSectionSave}
+              handleEntryDelete={handleEntryDelete}
+            />
+          </div>
+        )}
+        {currentSection === "Review & Download" && (
+          <Review generalData={generalData} educationData={educationList} />
+        )}
+      </div>
+    </div>
   );
 }
 
