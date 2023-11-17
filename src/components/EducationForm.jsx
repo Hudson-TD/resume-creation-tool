@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFormik } from "formik";
+import { Field, useFormik } from "formik";
 import * as Yup from "yup";
 
 const EducationForm = ({ dataList, onSave }) => {
@@ -59,11 +59,12 @@ const EducationForm = ({ dataList, onSave }) => {
             ) : null}
           </div>
           <div className="form-control d-flex flex-column">
-            <label htmlFor="educationLevel">Level of Education *</label>
-            <select
-              id="educationLevel"
+            <p>Education Level *</p>
+            <div
+              role="group"
+              id="educationLevelHeader"
               name="educationLevel"
-              type="text"
+              className="d-flex flex-column"
               onClick={(e) => {
                 let selection = e.target.value;
                 if (selection !== "High School Diploma") {
@@ -76,13 +77,67 @@ const EducationForm = ({ dataList, onSave }) => {
               onBlur={formik.handleBlur}
               value={formik.values.educationLevel}
             >
-              <option value="High School Diploma">High School Diploma</option>
-              <option value="Certification">Certification</option>
-              <option value="Associate">Associate</option>
-              <option value="Bachelor's">Bachelor&apos;s</option>
-              <option value="Master's">Master&apos;s</option>
-              <option value="Doctorate">Doctorate</option>
-            </select>
+              <div className="d-flex">
+                <input
+                  className="mx-2"
+                  id="High School Diploma"
+                  name="educationLevel"
+                  type="radio"
+                  value="High School Diploma"
+                />
+                <label htmlFor="High School Diploma">High School Diploma</label>
+              </div>
+              <div className="d-flex">
+                <input
+                  className="mx-2"
+                  id="Certification"
+                  name="educationLevel"
+                  type="radio"
+                  value="Certification"
+                />
+                <label htmlFor="Certification">Certification</label>
+              </div>
+              <div className="d-flex">
+                <input
+                  className="mx-2"
+                  id="Associate"
+                  name="educationLevel"
+                  type="radio"
+                  value="Associate"
+                />
+                <label htmlFor="Associate">Associate</label>
+              </div>
+              <div className="d-flex">
+                <input
+                  className="mx-2"
+                  id="Bachelor's"
+                  name="educationLevel"
+                  type="radio"
+                  value="Bachelor's"
+                />
+                <label htmlFor="Bachelor's">Bachelor&apos;s</label>
+              </div>
+              <div className="d-flex">
+                <input
+                  className="mx-2"
+                  id="Master's"
+                  name="educationLevel"
+                  type="radio"
+                  value="Master's"
+                />
+                <label htmlFor="Master's">Master&apos;s</label>
+              </div>
+              <div className="d-flex">
+                <input
+                  className="mx-2"
+                  id="Doctorate"
+                  name="educationLevel"
+                  type="radio"
+                  value="Doctorate"
+                />
+                <label htmlFor="Doctorate">Doctorate</label>
+              </div>
+            </div>
             {formik.touched.educationLevel && formik.errors.educationLevel ? (
               <span className="text-danger">
                 {formik.errors.educationLevel}
