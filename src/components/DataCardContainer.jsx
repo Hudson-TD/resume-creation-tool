@@ -1,6 +1,6 @@
 import EducationCard from "./EducationCard";
 
-function UserEducation({ dataList, onSectionSave, handleEntryDelete }) {
+function DataCardContainer({ dataList, onSectionSave, handleEntryDelete }) {
   return (
     <div
       className={
@@ -51,4 +51,4 @@ function UserEducation({ dataList, onSectionSave, handleEntryDelete }) {
   );
 }
 
-export default UserEducation;
+export default DataCardContainer;

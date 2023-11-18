@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Field, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const EducationForm = ({ dataList, onSave }) => {
@@ -191,7 +191,7 @@ const EducationForm = ({ dataList, onSave }) => {
             ) : null}
           </div>
           <div className="form-control d-flex flex-column">
-            <p>Accolades (optional)</p>
+            <p>Accolades (Optional)</p>
             <input
               className="mb-2"
               id="accoladeOne"

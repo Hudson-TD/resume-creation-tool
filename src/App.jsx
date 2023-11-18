@@ -2,15 +2,15 @@ import { useState } from "react";
 import Header from "./components/Header";
 import GeneralForm from "./components/GeneralForm";
 import EducationForm from "./components/EducationForm";
-import UserEducation from "./components/UserEducation";
+import DataCardContainer from "./components/DataCardContainer";
+import ExperienceForm from "./components/ExperienceForm";
 import Review from "./components/Review";
 
 function App() {
   const [currentSection, setCurrentSection] = useState("General Information");
-
   const [generalData, setGeneralData] = useState({});
-
   const [educationList, setEducationList] = useState([]);
+  const [experienceList, setExperienceList] = useState([]);
 
   function handleSectionChange(e) {
     let newSection = e.target.getAttribute("data-section");
@@ -29,6 +29,11 @@ function App() {
   function handleEducationSave(formikObj) {
     const newEducationEntry = formikObj;
     setEducationList([...educationList, newEducationEntry]);
+  }
+
+  function handleExperienceSave(formikObj) {
+    const newExperienceEntry = formikObj;
+    setExperienceList([...experienceList, newExperienceEntry]);
   }
 
   function handleEntryDelete(e) {
@@ -56,17 +61,24 @@ function App() {
             onSectionSave={handleSectionSave}
           />
         )}
-        <br />
         {currentSection === "Education" && (
           <div className={"d-flex"}>
             <EducationForm
               onSave={handleEducationSave}
               dataList={educationList}
             />
-            <UserEducation
+            <DataCardContainer
               dataList={educationList}
               onSectionSave={handleSectionSave}
               handleEntryDelete={handleEntryDelete}
+            />
+          </div>
+        )}
+        {currentSection === "Work Experience" && (
+          <div className={"d-flex"}>
+            <ExperienceForm
+              dataList={experienceList}
+              onSave={handleExperienceSave}
             />
           </div>
         )}
