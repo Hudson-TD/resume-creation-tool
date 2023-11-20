@@ -24,6 +24,7 @@ function EducationCard({ data, handleEntryDelete }) {
         <button
           type="button"
           value={data.institute}
+          data-list="educationList"
           className="btn btn-light h-100 w-15"
           onClick={handleEntryDelete}
         >

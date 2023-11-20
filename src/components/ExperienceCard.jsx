@@ -21,6 +21,7 @@ function ExperienceCard({ data, handleEntryDelete }) {
         <button
           type="button"
           value={data.companyName}
+          data-list="experienceList"
           className="btn btn-light h-100 w-15"
           onClick={handleEntryDelete}
         >

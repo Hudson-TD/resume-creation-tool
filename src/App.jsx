@@ -37,13 +37,22 @@ function App() {
     setExperienceList([...experienceList, newExperienceEntry]);
   }
 
-  function handleEntryDelete(e) {
+  function handleEducationDelete(e) {
     let filterVal = e.target.value;
     let newArray = educationList.filter((item) => {
       return item.institute !== filterVal;
     });
 
     setEducationList([...newArray]);
+  }
+
+  function handleExperienceDelete(e) {
+    let filterVal = e.target.value;
+    let newArray = experienceList.filter((item) => {
+      return item.companyName !== filterVal;
+    });
+
+    setExperienceList([...newArray]);
   }
 
   return (
@@ -71,7 +80,7 @@ function App() {
             <DataCardContainer
               dataList={educationList}
               onSectionSave={handleSectionChange}
-              handleEntryDelete={handleEntryDelete}
+              handleEntryDelete={handleEducationDelete}
               cardType="education"
             />
           </div>
@@ -85,13 +94,17 @@ function App() {
             <DataCardContainer
               dataList={experienceList}
               onSectionSave={handleSectionChange}
-              handleEntryDelete={handleEntryDelete}
+              handleEntryDelete={handleExperienceDelete}
               cardType="experience"
             />
           </div>
         )}
         {currentSection === "Review" && (
-          <Review generalData={generalData} educationData={educationList} experienceData={experienceList} />
+          <Review
+            generalData={generalData}
+            educationData={educationList}
+            experienceData={experienceList}
+          />
         )}
       </div>
     </div>
