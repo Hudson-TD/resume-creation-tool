@@ -1,4 +1,4 @@
-function Review({ generalData, educationData }) {
+function Review({ generalData, educationData, experienceData }) {
   return (
     <>
       <div className="form-control mb-5">
@@ -23,6 +23,22 @@ function Review({ generalData, educationData }) {
               <p>{entry.accoladeOne}</p>
               <p>{entry.accoladeTwo}</p>
               <p>{entry.accoladeThree}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      <div>
+        {experienceData.map((entry) => {
+          return (
+            <div className="form-control mb-5">
+              <p>{entry.companyName}</p>
+              <p>{entry.title}</p>
+              <p>{entry.startDate}</p>
+              <p>{entry.endDate}</p>
+              <p>{entry.achievementOne}</p>
+              <p>{entry.achievementTwo}</p>
+              <p>{entry.achievementThree}</p>
             </div>
           );
         })}

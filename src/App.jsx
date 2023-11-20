@@ -14,6 +14,7 @@ function App() {
 
   function handleSectionChange(e) {
     let newSection = e.target.getAttribute("data-section");
+    console.log("new section", newSection);
     setCurrentSection(newSection);
   }
 
@@ -69,8 +70,9 @@ function App() {
             />
             <DataCardContainer
               dataList={educationList}
-              onSectionSave={handleSectionSave}
+              onSectionSave={handleSectionChange}
               handleEntryDelete={handleEntryDelete}
+              cardType="education"
             />
           </div>
         )}
@@ -80,10 +82,16 @@ function App() {
               dataList={experienceList}
               onSave={handleExperienceSave}
             />
+            <DataCardContainer
+              dataList={experienceList}
+              onSectionSave={handleSectionChange}
+              handleEntryDelete={handleEntryDelete}
+              cardType="experience"
+            />
           </div>
         )}
-        {currentSection === "Review & Download" && (
-          <Review generalData={generalData} educationData={educationList} />
+        {currentSection === "Review" && (
+          <Review generalData={generalData} educationData={educationList} experienceData={experienceList} />
         )}
       </div>
     </div>

@@ -54,36 +54,32 @@ const ExperienceForm = ({ dataList, onSave }) => {
             ) : null}
           </div>
           <div className="form-control d-flex flex-column">
-            <div className="d-flex">
-              <div>
-                <label htmlFor="city">City *</label>
-                <input
-                  id="city"
-                  name="city"
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.city}
-                />
-                {formik.touched.city && formik.errors.city ? (
-                  <span className="text-danger">{formik.errors.city}</span>
-                ) : null}
-              </div>
-              <div>
-                <label htmlFor="state">State *</label>
-                <input
-                  id="state"
-                  name="state"
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.state}
-                />
-                {formik.touched.state && formik.errors.state ? (
-                  <span className="text-danger">{formik.errors.state}</span>
-                ) : null}
-              </div>
-            </div>
+            <label htmlFor="city">City *</label>
+            <input
+              id="city"
+              name="city"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.city}
+            />
+            {formik.touched.city && formik.errors.city ? (
+              <span className="text-danger">{formik.errors.city}</span>
+            ) : null}
+          </div>
+          <div className="form-control d-flex flex-column">
+            <label htmlFor="state">State *</label>
+            <input
+              id="state"
+              name="state"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.state}
+            />
+            {formik.touched.state && formik.errors.state ? (
+              <span className="text-danger">{formik.errors.state}</span>
+            ) : null}
           </div>
           <div className="form-control d-flex flex-column">
             <label htmlFor="title">Title/Role *</label>

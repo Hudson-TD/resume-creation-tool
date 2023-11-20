@@ -1,10 +1,10 @@
 function EducationCard({ data, handleEntryDelete }) {
   console.log(data);
-  const startString = data.startDate;
-  // const startSplit = startString.split("-");
+  // const startString = data.startDate;
+  // // const startSplit = startString.split("-");
 
-  const gradString = data.graduationDate;
-  // const gradSplit = gradString.split("-");
+  // const gradString = data.graduationDate;
+  // // const gradSplit = gradString.split("-");
 
   return (
     <div className="card w-75 mb-1 d-flex flex-row">

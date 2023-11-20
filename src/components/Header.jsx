@@ -3,7 +3,7 @@ function Header({ onChange, currentSection }) {
     "General Information",
     "Education",
     "Work Experience",
-    "Review & Download",
+    "Review",
   ];
   return (
     <div className="d-flex flex-column h-100 p-3 bg-dark border border-dark">
