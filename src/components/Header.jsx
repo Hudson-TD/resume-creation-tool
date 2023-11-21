@@ -19,18 +19,17 @@ function Header({ onChange, currentSection }) {
           <div className="d-flex flex-column justify-content-center align-items-center">
             {sections.map((section, index) => {
               return (
-                <button
+                <h1
                   key={index}
                   data-section={section}
                   className={
                     currentSection === section
-                      ? "btn btn-primary my-3"
-                      : "btn btn-light my-3"
+                      ? "form-control bg-primary text-white text-center my-3 border border-dark"
+                      : "form-control bg-light text-center my-3 border border-light"
                   }
-                  onClick={onChange}
                 >
                   {section}
-                </button>
+                </h1>
               );
             })}
           </div>

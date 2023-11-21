@@ -5,9 +5,10 @@ import EducationForm from "./components/EducationForm";
 import DataCardContainer from "./components/DataCardContainer";
 import ExperienceForm from "./components/ExperienceForm";
 import Review from "./components/Review";
+import Home from "./components/Home";
 
 function App() {
-  const [currentSection, setCurrentSection] = useState("General Information");
+  const [currentSection, setCurrentSection] = useState("Home");
   const [generalData, setGeneralData] = useState({});
   const [educationList, setEducationList] = useState([]);
   const [experienceList, setExperienceList] = useState([]);
@@ -64,6 +65,9 @@ function App() {
         />
       </div>
       <div className="w-75">
+        {currentSection === "Home" && (
+          <Home handleStart={handleSectionChange} />
+        )}
         {currentSection === "General Information" && (
           <GeneralForm
             formData={generalData}
